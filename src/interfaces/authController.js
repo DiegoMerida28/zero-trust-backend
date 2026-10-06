@@ -37,6 +37,13 @@ class AuthController {
             next(error);
         }
     };
+
+    me = async (req, res) => {
+        return res.status(200).json({
+            authenticated: true,
+            user: req.user
+        });
+    };
 }
 
 module.exports = AuthController;

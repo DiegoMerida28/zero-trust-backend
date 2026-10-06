@@ -41,7 +41,14 @@ router.post(
     authController.login
 );
 
-// Ruta protegida
+// Ruta protegida para consultar la sesión actual
+router.get(
+    '/auth/me',
+    authMiddleware,
+    authController.me
+);
+
+// Ruta protegida del Dashboard
 router.get(
     '/dashboard',
     authMiddleware,
