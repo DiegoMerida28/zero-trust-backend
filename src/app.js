@@ -8,6 +8,8 @@ const errorMiddleware = require('./middlewares/errorMiddleware');
 
 const app = express();
 
+app.set('trust proxy', '10.0.0.8');
+
 // Oculta información sobre Express
 app.disable('x-powered-by');
 

@@ -5,7 +5,7 @@ const { pool } = require('./db');
 class UserRepository extends UserRepositoryPort {
     async findByUsername(username) {
         const [rows] = await pool.execute(
-            `SELECT id, username, password_hash, role, active
+            `SELECT id, username, password_hash, role, is_active
              FROM users
              WHERE username = ?
              LIMIT 1`,
@@ -23,13 +23,13 @@ class UserRepository extends UserRepositoryPort {
             row.username,
             row.password_hash,
             row.role,
-            Boolean(row.active)
+            Boolean(row.is_active)
         );
     }
 
     async findById(id) {
         const [rows] = await pool.execute(
-            `SELECT id, username, password_hash, role, active
+            `SELECT id, username, password_hash, role, is_active
              FROM users
              WHERE id = ?
              LIMIT 1`,
@@ -47,7 +47,7 @@ class UserRepository extends UserRepositoryPort {
             row.username,
             row.password_hash,
             row.role,
-            Boolean(row.active)
+            Boolean(row.is_active)
         );
     }
 
